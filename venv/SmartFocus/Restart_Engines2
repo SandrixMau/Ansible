@@ -1,0 +1,88 @@
+## YAML Template.
+---
+- hosts: migration
+  vars:
+  remote_user: root
+  tasks:
+  - name: start scheduler
+    service:
+      name: scheduler3
+      state: started
+    register: result
+
+  - debug:
+      var: result
+
+  - name: start cronExport
+    service:
+      name: cccronexportengine
+      state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start individualInsert/Update
+    service:
+      name: memberengine
+      state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start importUI
+    service:
+      name: member-import-service
+      state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start nm-member
+    service:
+       name: memberengine-transactional
+       state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start reflex
+    service:
+       name: reflexengine
+       state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start thumbengine
+    service:
+       name: thumbengine
+       state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start implicitopenengine
+    service:
+       name: implicitopenengine
+       state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start trackingtodb
+    service:
+      name: trackingtodbengine
+      state: started
+    register: result
+
+  - debug:
+      var: result
+
+  - name: start activemq
+    service:
+      name: activemq
+      state: started
+    register: result
+
+  - debug:
+      var: result

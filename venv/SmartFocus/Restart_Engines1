@@ -1,0 +1,80 @@
+## YAML Template.
+---
+- hosts: migration
+  vars:
+  remote_user: root
+  tasks:
+  - name: start scheduler
+    service:
+      name: scheduler3
+      state: started
+    register: result
+
+  - debug:
+      var: result
+
+  - name: start exportEngine
+    service:
+      name: ccexportengine
+      state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start externalSegment
+    service:
+      name: externalsegmentengine
+      state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start importAPI
+    service:
+       name: flatuploadengine
+       state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start mailpush
+    service:
+       name: mailpush
+       state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start reportengine
+    service:
+       name: reportengine
+       state: started
+    register: result
+  - debug:
+      var: result
+
+  - name: start splitrunengine
+    service:
+       name: splitrunengine
+       state: started
+    register: result
+  - debug:
+     var: result
+
+  - name: start activemq
+    service:
+      name: activemq
+      state: started
+    register: result
+
+  - debug:
+      var: result
+
+  - name: start trackingtodb
+    service:
+      name: trackingtodbengine
+      state: started
+    register: result
+
+  - debug:
+      var: result
