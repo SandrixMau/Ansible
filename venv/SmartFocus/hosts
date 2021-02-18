@@ -1,0 +1,42 @@
+File namec 'hosts' to be placed under /etc/ansible
+
+; this is an INI file
+[sme]
+smex1
+#smer1
+
+[localhost_group]
+localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python"
+
+[platformsupportp1]
+platformsupportp1.emv2.com
+
+[api]
+p6apix1 ansible_python_interpreter="/usr/bin/python2.4"
+p6apix2
+
+[scheduler1]
+p[1:9]enginex1
+p[3:6]enginer1
+p1enginer1
+p2enginer5
+
+[scheduler2]
+p1enginex2
+p2enginex3
+p[3:8]enginex2
+p7enginex4
+p9enginex3
+p1enginer2
+p2enginer3
+p[3:6]enginer2
+
+[scheduler:children]
+scheduler1
+scheduler2
+
+[migration]
+#p7enginex4.emv2.com
+#p5enginer1.emv2.com
+#p2enginer5.emv2.com
+p2enginer3.emv2.com
